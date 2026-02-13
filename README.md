@@ -17,7 +17,7 @@ A romantic, interactive Valentine's Day confession website with password protect
 Open `index.html` and change the password (currently set to `0506`):
 
 ```javascript
-const PASSWORD = "0707"; // Change this to your special date!
+const PASSWORD = "0506"; // Change this to your special date!
 ```
 
 ### 2. Add Your Photos
