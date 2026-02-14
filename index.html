@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Love ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background:linear-gradient(135deg,#ffd1dc,#ffe6f0);
+    text-align:center;
+    overflow-x:hidden;
+}
+
+/* PASSWORD SCREEN */
+
+#lockScreen{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+input{
+    padding:12px;
+    border-radius:10px;
+    border:none;
+    margin-top:10px;
+}
+
+button{
+    padding:12px 26px;
+    border:none;
+    border-radius:12px;
+    background:#ff4d88;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    margin:10px;
+}
+
+.hidden{
+    display:none;
+}
+
+/* HERO */
+
+.section{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+h1{
+    font-family:'Pacifico';
+    color:#d63384;
+    font-size:3rem;
+}
+
+/* PHOTO SLIDER */
+
+.slider{
+    width:280px;
+    height:380px;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.slider img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* LOVE CARD */
+
+.card{
+    max-width:600px;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.1);
+}
+
+/* REASONS */
+
+.reason{
+    background:#ff8fab;
+    color:white;
+    padding:16px;
+    margin:10px;
+    border-radius:14px;
+    cursor:pointer;
+}
+
+/* HEART FLOAT */
+
+.heart{
+    position:fixed;
+    bottom:-10px;
+    font-size:24px;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    to{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+<source src="https://www.bensound.com/bensound-music/bensound-love.mp3">
+</audio>
+
+
+<!-- PASSWORD -->
+
+<div id="lockScreen">
+
+<h1>This is only for you ❤️</h1>
+<p>Enter our special date:</p>
+
+<input id="pass" placeholder="Example: 0707">
+
+<button onclick="unlock()">Open</button>
+
+</div>
+
+
+
+<!-- MAIN SITE -->
+
+<div id="site" class="hidden">
+
+<div class="section">
+
+<h1>Will you be my Valentine?</h1>
+
+<button onclick="yes()">YES OF COURSE ❤️</button>
+<button id="noBtn">No</button>
+
+</div>
+
+
+
+<!-- AFTER YES -->
+
+<div id="afterYes" class="hidden">
+
+<div class="section">
+
+<h1>You just made me the happiest girl alive 💕</h1>
+
+<div class="slider">
+<img id="slide">
+</div>
+
+</div>
+
+
+<!-- LOVE LETTER -->
+
+<div class="section">
+
+<h1>Words From My Heart</h1>
+
+<div class="card">
+
+You walked into my life and suddenly everything made sense.
+
+Every song feels romantic.  
+Every day feels softer.  
+Every dream feels possible.
+
+If I had to choose again,  
+in every lifetime,  
+in every universe…
+
+**I would still choose you.**
+
+Forever yours ❤️
+
+</div>
+
+</div>
+
+
+
+<!-- REASONS -->
+
+<div class="section">
+
+<h1>Why I Love You</h1>
+
+<div class="reason" onclick="alert('Because you make even ordinary days magical ✨')">Tap me</div>
+<div class="reason" onclick="alert('Because your smile is my favorite view ❤️')">Tap me</div>
+<div class="reason" onclick="alert('Because you love me in ways I never knew I needed')">Tap me</div>
+<div class="reason" onclick="alert('Because life feels lighter with you')">Tap me</div>
+
+</div>
+
+
+
+<!-- TIMELINE -->
+
+<div class="section">
+
+<h1>Our Story</h1>
+
+<div class="card">
+❤️ The day we met — my favorite coincidence  
+❤️ The first time we laughed nonstop and have those fights where i always win
+❤️ The moment I realized… it was you  
+❤️ Today — asking you to be mine forever  
+</div>
+
+</div>
+
+
+
+<!-- FINAL SURPRISE -->
+
+<div class="section">
+
+<h1>One More Question...</h1>
+
+<div class="card">
+Are you ready for a lifetime of annoying me, laughing with me,
+and being ridiculously in love with me?
+
+<br><br>
+
+<strong>I love you more than you know ❤️</strong>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+/* PASSWORD — CHANGE THIS */
+const PASSWORD = "0506"; // put your special date!
+
+function unlock(){
+
+let val=document.getElementById("pass").value;
+
+if(val===PASSWORD){
+
+document.getElementById("lockScreen").classList.add("hidden");
+document.getElementById("site").classList.remove("hidden");
+
+document.getElementById("music").play();
+
+launchHearts();
+
+}
+
+else{
+alert("Wrong date 😛 Try again!");
+}
+
+}
+
+
+/* MOVING NO BUTTON */
+
+const noBtn=document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover",()=>{
+
+noBtn.style.position="absolute";
+noBtn.style.left=Math.random()*80+"vw";
+noBtn.style.top=Math.random()*80+"vh";
+
+});
+
+
+/* YES */
+
+function yes(){
+
+document.getElementById("afterYes").classList.remove("hidden");
+
+window.scrollTo({
+top:window.innerHeight,
+behavior:'smooth'
+});
+
+fireworks();
+
+}
+
+
+/* HEARTS */
+
+function launchHearts(){
+
+setInterval(()=>{
+
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="💖";
+
+heart.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+},300);
+
+}
+
+
+/* FIREWORKS */
+
+function fireworks(){
+
+for(let i=0;i<80;i++){
+
+let spark=document.createElement("div");
+
+spark.innerHTML="✨";
+spark.style.position="fixed";
+spark.style.left=Math.random()*100+"vw";
+spark.style.top=Math.random()*100+"vh";
+spark.style.fontSize="24px";
+
+document.body.appendChild(spark);
+
+setTimeout(()=>{
+spark.remove();
+},2000);
+
+}
+
+}
+
+
+/* PHOTO SLIDER — ADD YOUR PHOTOS */
+
+const photos=[
+"IMG_0030.jpeg",
+"IMG_7246.jpeg",
+"IMG_8016.jpeg",
+"IMG_9930.jpeg"
+];
+    
+
+let i=0;
+
+function slide(){
+
+document.getElementById("slide").src=photos[i];
+i=(i+1)%photos.length;
+
+}
+
+setInterval(slide,2500);
+slide();
+
+</script>
+
+</body>
+</html>
